@@ -32,4 +32,12 @@ app.use(express.static("public"));
 // for parsing cookies in request, server se cookies access and set karne ke liye
 app.use(cookieParser());
 
+// Importing routes
+import userRouter from "./routes/user.routes.js";
+
+// routes declaration
+// app.get() - route usi code mai tha isiliye get chal raha tha
+// app.use("/users",userRouter)
+app.use("/api/v1/users", userRouter);
+
 export default app;

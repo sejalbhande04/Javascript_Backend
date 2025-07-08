@@ -2,7 +2,7 @@
 // This utility function wraps an Express.js route handler to automatically catch errors and pass them to the next middleware.
 // This is useful for avoiding repetitive try-catch blocks in route handlers.
 
-const asynchandler = (requestHandler) => {
+const asyncHandler = (requestHandler) => {
   return async (req, res, next) => {
     Promise.resolve(requestHandler(req, res, next)).catch((err) => next(err));
   };
@@ -26,4 +26,4 @@ const asynchandler = (requestHandler) => {
 
 // }
 
-export { asynchandler };
+export { asyncHandler };

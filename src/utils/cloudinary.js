@@ -7,15 +7,15 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-cloudinary.v2.uploader.upload("");
-import { v2 as cloudinary } from "cloudinary";
 
-// Configuration
-cloudinary.config({
-  cloud_name: "dosjvtcwi",
-  api_key: "857115791998615",
-  api_secret: "<your_api_secret>", // Click 'View API Keys' above to copy your API secret
-});
+// import { v2 as cloudinary } from "cloudinary";
+
+// // Configuration
+// cloudinary.config({
+//   cloud_name: "dosjvtcwi",
+//   api_key: "857115791998615",
+//   api_secret: "<your_api_secret>", // Click 'View API Keys' above to copy your API secret
+// });
 
 // Upload an image
 //  const uploadResult = await cloudinary.uploader
@@ -38,3 +38,6 @@ const uploadOnCloudinary = async (localFilePath) => {
     return null;
   }
 };
+
+
+export {uploadOnCloudinary}

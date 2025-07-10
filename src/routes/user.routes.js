@@ -1,24 +1,30 @@
-import {Router} from "express"
+import { Router } from "express";
 // curly braces mai import tbhi kr skte hai jb export mai bhi curly braces ho
 // agar export default hai to import krte time curly braces nahi lagate
-import { registerUser } from "../controllers/user.controller.js"
-import {upload} from "../middlewares/multer.middleware.js"
-const router = Router()
+import { loginUser, logoutUser, registerUser } from "../controllers/user.controller.js";
+import { upload } from "../middlewares/multer.middleware.js";
+import { verifyJWT } from "../middlewares/auth.middleware.js";
+
+const router = Router();
 
 router.route("/register").post(
-    upload.fields([
-        {name: "avatar",
-            maxCount: 1 // maxCount is used to limit the number of files uploaded for a field
-        },
-        {
-            name: "coverImage",
-            maxCount: 1
-        },
-    
+  upload.fields([
+    {
+      name: "avatar",
+      maxCount: 1, // maxCount is used to limit the number of files uploaded for a field
+    },
+    {
+      name: "coverImage",
+      maxCount: 1,
+    },
+  ]),
+  registerUser
+);
 
-    ]),
-    registerUser)
+router.route("/login").post(loginUser);
 
-// router.route("/login").post(loginUser)
+// secured routes 
+router.route("/logout").post(verifyJWT, logoutUser)
 
-export default router
+
+export default router;
